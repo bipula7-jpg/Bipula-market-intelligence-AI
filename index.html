@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SIGNAL — Market Intelligence</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -13,14 +13,10 @@
   --text:#e8edf5;--text2:#8a9ab5;--text3:#3d5068;
   --cyan:#1fd4ec;--green:#3dd68c;--red:#f06b6b;
   --amber:#f5a623;--purple:#9b7ff5;
-  --mono:'IBM Plex Mono',monospace;
-  --sans:'Inter',sans-serif;
+  --mono:"IBM Plex Mono",monospace;--sans:"Inter",sans-serif;
 }
 body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:var(--sans)}
-
-/* NAV */
 nav{position:sticky;top:0;z-index:999;background:rgba(7,9,15,.96);border-bottom:1px solid var(--border);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
@@ -34,8 +30,6 @@ nav{position:sticky;top:0;z-index:999;background:rgba(7,9,15,.96);border-bottom:
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .live{font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(61,214,140,.07);border:1px solid rgba(61,214,140,.2);padding:3px 8px;border-radius:3px;letter-spacing:.1em}
 .clock{font-family:var(--mono);font-size:11px;color:var(--text3)}
-
-/* TICKER */
 .ticker{background:var(--bg2);border-bottom:1px solid var(--border);overflow:hidden;padding:6px 0}
 .ticker-inner{display:flex;white-space:nowrap;animation:scroll 55s linear infinite}
 .ticker-inner:hover{animation-play-state:paused}
@@ -44,12 +38,8 @@ nav{position:sticky;top:0;z-index:999;background:rgba(7,9,15,.96);border-bottom:
 .ts{color:var(--text3);font-size:10px}
 .tv{color:var(--text);font-weight:500}
 .up{color:var(--green)}.dn{color:var(--red)}.fl{color:var(--text3)}
-
-/* LAYOUT */
 .wrap{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 88px)}
 .side{border-right:1px solid var(--border);position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;padding:16px 0}
-.side::-webkit-scrollbar{width:3px}
-.side::-webkit-scrollbar-thumb{background:var(--border2)}
 .side-sec{margin-bottom:20px}
 .side-lbl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.14em;padding:0 14px 6px;text-transform:uppercase}
 .side-item{display:flex;justify-content:space-between;align-items:center;padding:6px 14px;font-size:12px;cursor:pointer;transition:background .12s}
@@ -57,55 +47,35 @@ nav{position:sticky;top:0;z-index:999;background:rgba(7,9,15,.96);border-bottom:
 .side-item.on{background:rgba(31,212,236,.05);border-left:2px solid var(--cyan)}
 .side-name{color:var(--text2)}
 .side-val{font-family:var(--mono);font-size:11px}
-
-/* CONTENT */
 .content{padding:20px 24px}
 .page{display:none}
 .page.on{display:block}
-
-/* HEADERS */
 .hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .hdr-title{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.14em;text-transform:uppercase}
-.hdr-title::before{content:'— '}
-.src-badge{font-family:var(--mono);font-size:9px;color:var(--cyan);background:rgba(31,212,236,.07);border:1px solid rgba(31,212,236,.18);padding:2px 8px;border-radius:3px;letter-spacing:.06em}
-
-/* ALERT */
-.alert{background:rgba(240,107,107,.07);border:1px solid rgba(240,107,107,.22);border-radius:8px;padding:12px 15px;margin-bottom:18px;display:flex;gap:10px}
-.alert-tag{font-family:var(--mono);font-size:9px;color:var(--red);background:rgba(240,107,107,.12);border:1px solid rgba(240,107,107,.2);padding:2px 7px;border-radius:3px;white-space:nowrap;height:fit-content;letter-spacing:.08em;margin-top:1px}
-.alert-text{font-size:12px;color:var(--text2);line-height:1.6}
-.alert-text b{color:var(--text)}
-
-/* CARDS GRID */
+.hdr-title::before{content:"— "}
+.src-badge{font-family:var(--mono);font-size:9px;color:var(--cyan);background:rgba(31,212,236,.07);border:1px solid rgba(31,212,236,.18);padding:2px 8px;border-radius:3px}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;margin-bottom:20px}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;transition:border-color .15s}
-.card:hover{border-color:var(--border2)}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
 .c-lbl{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
 .c-val{font-family:var(--mono);font-size:20px;font-weight:500;line-height:1;margin-bottom:4px}
 .c-chg{font-family:var(--mono);font-size:11px;margin-bottom:3px}
 .c-sub{font-size:10px;color:var(--text3)}
 .c-src{font-size:9px;color:var(--text3);margin-top:5px;font-family:var(--mono);opacity:.7}
-
-/* CHART */
 .chart-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:20px}
 .chart-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .chart-lbl{font-size:13px;font-weight:600;color:var(--text)}
 .ctabs{display:flex;gap:3px}
 .ctab{background:none;border:1px solid var(--border);color:var(--text3);font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:3px;transition:all .12s}
-.ctab:hover{color:var(--text2)}
 .ctab.on{background:rgba(31,212,236,.09);border-color:var(--cyan);color:var(--cyan)}
-
-/* AI PANEL */
 .aip{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin-bottom:20px}
 .aip-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
-.ai-badge{font-family:var(--mono);font-size:9px;color:var(--purple);background:rgba(155,127,245,.09);border:1px solid rgba(155,127,245,.25);padding:2px 8px;border-radius:3px;letter-spacing:.08em}
+.ai-badge{font-family:var(--mono);font-size:9px;color:var(--purple);background:rgba(155,127,245,.09);border:1px solid rgba(155,127,245,.25);padding:2px 8px;border-radius:3px}
 .aip-body{font-size:13px;color:var(--text2);line-height:1.75}
 .aip-body b{color:var(--text);font-weight:600}
 .aip-body .hl{color:var(--cyan);font-weight:600}
 .aip-body .warn{color:var(--amber)}
 .aip-body .danger{color:var(--red)}
 .aip-body .grn{color:var(--green)}
-
-/* ASK BAR */
 .ask-wrap{display:flex;gap:8px;margin-bottom:18px}
 .ask-in{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:10px 14px;font-family:var(--sans);font-size:13px;color:var(--text);outline:none;transition:border-color .15s}
 .ask-in:focus{border-color:var(--cyan)}
@@ -119,11 +89,9 @@ nav{position:sticky;top:0;z-index:999;background:rgba(7,9,15,.96);border-bottom:
 .sq-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
 .sq{background:var(--bg2);border:1px solid var(--border);color:var(--text2);font-size:11px;font-family:var(--mono);padding:6px 12px;border-radius:20px;transition:all .15s}
 .sq:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(31,212,236,.04)}
-
-/* SECTORS */
-.sec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:10px;margin-bottom:20px}
+.sec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;margin-bottom:20px}
 .sec-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px 14px;cursor:pointer;transition:all .15s;border-left:3px solid transparent}
-.sec-card:hover{border-color:var(--border2);transform:translateY(-1px)}
+.sec-card:hover{transform:translateY(-1px);border-color:var(--border2)}
 .sec-card.bull{border-left-color:var(--green)}
 .sec-card.bear{border-left-color:var(--red)}
 .sec-card.neut{border-left-color:var(--amber)}
@@ -133,46 +101,33 @@ nav{position:sticky;top:0;z-index:999;background:rgba(7,9,15,.96);border-bottom:
 .sec-bar-fill{height:100%;border-radius:2px}
 .sec-sig{font-family:var(--mono);font-size:10px;letter-spacing:.07em}
 .sec-sig.bull{color:var(--green)}.sec-sig.bear{color:var(--red)}.sec-sig.neut{color:var(--amber)}
-.sec-drv{font-size:11px;color:var(--text3);margin-top:6px;line-height:1.45}
-
-/* TABLE */
 .tbl-wrap{overflow-x:auto;margin-bottom:20px;border-radius:8px;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse;min-width:700px}
+table{width:100%;border-collapse:collapse;min-width:600px}
 th{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.09em;text-transform:uppercase;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);background:var(--bg2);white-space:nowrap}
 td{font-family:var(--mono);font-size:12px;color:var(--text2);padding:9px 12px;white-space:nowrap;border-bottom:1px solid rgba(28,42,62,.5)}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--bg2);cursor:pointer}
+tr:hover td{background:var(--bg2)}
 .t-tick{color:var(--cyan);font-weight:600;font-size:13px}
-.t-name{font-family:var(--sans);font-size:12px;color:var(--text);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bdg{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:3px;letter-spacing:.07em}
+.t-name{font-family:var(--sans);font-size:12px;color:var(--text)}
+.bdg{font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:3px}
 .bdg.bull{background:rgba(61,214,140,.1);color:var(--green);border:1px solid rgba(61,214,140,.2)}
 .bdg.bear{background:rgba(240,107,107,.1);color:var(--red);border:1px solid rgba(240,107,107,.2)}
 .bdg.neut{background:rgba(245,166,35,.1);color:var(--amber);border:1px solid rgba(245,166,35,.2)}
-
-/* YIELDS */
 .yield-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:9px;margin-bottom:20px}
 .yc{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:10px 12px}
-.yc-t{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.1em;margin-bottom:5px}
+.yc-t{font-family:var(--mono);font-size:9px;color:var(--text3);margin-bottom:5px}
 .yc-v{font-family:var(--mono);font-size:15px;font-weight:500}
-.yc-c{font-family:var(--mono);font-size:10px;margin-top:3px}
-
-/* NEWS */
 .news-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
-.news-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;gap:12px;transition:border-color .15s}
+.news-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;gap:12px}
 .news-item:hover{border-color:var(--border2)}
-.ntag{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;letter-spacing:.08em;white-space:nowrap;height:fit-content;flex-shrink:0;margin-top:2px}
-.ntag.mac{background:rgba(31,212,236,.08);color:var(--cyan);border:1px solid rgba(31,212,236,.2)}
-.ntag.rat{background:rgba(240,107,107,.08);color:var(--red);border:1px solid rgba(240,107,107,.2)}
+.ntag{font-family:var(--mono);font-size:9px;padding:2px 7px;border-radius:3px;white-space:nowrap;height:fit-content;flex-shrink:0;margin-top:2px}
 .ntag.eqt{background:rgba(61,214,140,.08);color:var(--green);border:1px solid rgba(61,214,140,.2)}
+.ntag.mac{background:rgba(31,212,236,.08);color:var(--cyan);border:1px solid rgba(31,212,236,.2)}
 .ntag.cmd{background:rgba(245,166,35,.08);color:var(--amber);border:1px solid rgba(245,166,35,.2)}
+.ntag.rat{background:rgba(240,107,107,.08);color:var(--red);border:1px solid rgba(240,107,107,.2)}
 .ntag.geo{background:rgba(155,127,245,.08);color:var(--purple);border:1px solid rgba(155,127,245,.2)}
 .n-hl{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:4px}
-.n-meta{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:6px}
-.n-imp{font-size:12px;color:var(--text2);line-height:1.55;border-top:1px solid var(--border);padding-top:7px}
-.bull-t{color:var(--green);font-weight:600}
-.bear-t{color:var(--red);font-weight:600}
-
-/* OUTLOOK */
+.n-meta{font-family:var(--mono);font-size:10px;color:var(--text3)}
 .out-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
 .out-card{border-radius:8px;padding:14px}
 .oc-bull{background:rgba(61,214,140,.05);border:1px solid rgba(61,214,140,.18)}
@@ -183,39 +138,30 @@ tr:hover td{background:var(--bg2);cursor:pointer}
 .oc-list{list-style:none}
 .oc-list li{font-size:12px;color:var(--text2);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.4}
 .oc-list li:last-child{border-bottom:none}
-
-/* FILTER BTNS */
 .filters{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
-.fbtn{background:var(--bg2);border:1px solid var(--border);color:var(--text3);font-family:var(--mono);font-size:10px;padding:4px 11px;border-radius:4px;transition:all .12s;letter-spacing:.05em}
+.fbtn{background:var(--bg2);border:1px solid var(--border);color:var(--text3);font-family:var(--mono);font-size:10px;padding:4px 11px;border-radius:4px;transition:all .12s}
 .fbtn:hover{border-color:var(--border2);color:var(--text2)}
 .fbtn.on{background:rgba(31,212,236,.08);border-color:var(--cyan);color:var(--cyan)}
-
-/* FOOTER */
 footer{border-top:1px solid var(--border);padding:10px 24px;font-family:var(--mono);font-size:9px;color:var(--text3);display:flex;justify-content:space-between}
-
-/* SPIN */
 .spin{display:inline-block;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
-
 @media(max-width:860px){
   .wrap{grid-template-columns:1fr}
   .side{position:static;height:auto;display:flex;overflow-x:auto;border-right:none;border-bottom:1px solid var(--border);padding:8px 0}
   .side-sec{display:flex;gap:3px;padding:0 8px;margin:0;flex-shrink:0}
   .side-lbl{display:none}
-  .side-item{white-space:nowrap;border-radius:5px}
   .out-grid{grid-template-columns:1fr}
   .tabs{display:none}
 }
 </style>
 </head>
 <body>
-
 <nav>
   <div class="brand">
     <div class="dot"></div>
     <div>
       <div class="brand-name">SIGNAL</div>
-      <div class="brand-date">market intelligence · jun 4, 2026</div>
+      <div class="brand-date">auto-updated daily · Jun 05, 2026</div>
     </div>
   </div>
   <div class="tabs">
@@ -231,488 +177,279 @@ footer{border-top:1px solid var(--border);padding:10px 24px;font-family:var(--mo
     <div class="clock" id="clk">--:--:--</div>
   </div>
 </nav>
-
 <div class="ticker"><div class="ticker-inner" id="tkr"></div></div>
-
 <div class="wrap">
   <aside class="side">
     <div class="side-sec">
       <div class="side-lbl">Indices</div>
-      <div class="side-item on" onclick="go('macro',null)"><span class="side-name">S&amp;P 500</span><span class="side-val up">7,584</span></div>
-      <div class="side-item" onclick="go('macro',null)"><span class="side-name">Dow Jones</span><span class="side-val up">51,562</span></div>
-      <div class="side-item" onclick="go('macro',null)"><span class="side-name">Nasdaq</span><span class="side-val dn">26,831</span></div>
-      <div class="side-item" onclick="go('macro',null)"><span class="side-name">Russell 2K</span><span class="side-val up">2,935</span></div>
+      <div class="side-item on" onclick="go('macro',null)"><span class="side-name">S&amp;P 500</span><span class="side-val fl">0.00</span></div>
+      <div class="side-item" onclick="go('macro',null)"><span class="side-name">Dow Jones</span><span class="side-val fl">0.00</span></div>
+      <div class="side-item" onclick="go('macro',null)"><span class="side-name">Nasdaq</span><span class="side-val fl">0.00</span></div>
+      <div class="side-item" onclick="go('macro',null)"><span class="side-name">Russell 2K</span><span class="side-val fl">0.00</span></div>
     </div>
     <div class="side-sec">
       <div class="side-lbl">Rates</div>
-      <div class="side-item" onclick="go('rates',null)"><span class="side-name">10Y Yield</span><span class="side-val fl">4.47%</span></div>
-      <div class="side-item" onclick="go('rates',null)"><span class="side-name">Fed Rate</span><span class="side-val fl">3.75%</span></div>
-      <div class="side-item" onclick="go('rates',null)"><span class="side-name">2Y Yield</span><span class="side-val fl">4.05%</span></div>
+      <div class="side-item" onclick="go('rates',null)"><span class="side-name">10Y Yield</span><span class="side-val fl">0.00%</span></div>
+      <div class="side-item" onclick="go('rates',null)"><span class="side-name">Fed Rate</span><span class="side-val fl">0.00%</span></div>
+      <div class="side-item" onclick="go('rates',null)"><span class="side-name">2Y Yield</span><span class="side-val fl">0.00%</span></div>
     </div>
     <div class="side-sec">
       <div class="side-lbl">Commodities</div>
-      <div class="side-item"><span class="side-name">WTI Oil</span><span class="side-val dn">$92.87</span></div>
-      <div class="side-item"><span class="side-name">Brent</span><span class="side-val dn">$96.97</span></div>
-      <div class="side-item"><span class="side-name">Gold</span><span class="side-val up">$4,493</span></div>
+      <div class="side-item"><span class="side-name">Oil (USO)</span><span class="side-val fl">0.00</span></div>
+      <div class="side-item"><span class="side-name">Gold (GLD)</span><span class="side-val fl">0.00</span></div>
     </div>
     <div class="side-sec">
       <div class="side-lbl">Sentiment</div>
-      <div class="side-item"><span class="side-name">VIX</span><span class="side-val fl">15.40</span></div>
-      <div class="side-item"><span class="side-name">Bitcoin</span><span class="side-val dn">$63,881</span></div>
+      <div class="side-item"><span class="side-name">VIX</span><span class="side-val fl">0.00</span></div>
     </div>
   </aside>
-
   <main class="content">
 
     <!-- MACRO -->
     <div class="page on" id="pg-macro">
-      <div class="alert">
-        <span class="alert-tag">BREAKING · JUN 4</span>
-        <div class="alert-text"><b>Dow hits all-time record 51,562 (+1.73%) on healthcare and financials rotation. Broadcom (AVGO) −12.6% after revenue miss — AI chip guidance flat disappoints. UnitedHealth +5.2% on BofA upgrade. WTI oil −3% to $92.87 on Iran ceasefire hopes. SpaceX IPO roadshow begins — June 12 debut at $135/sh, $1.75T valuation.</b></div>
-      </div>
       <div class="hdr">
-        <div class="hdr-title">Macro Dashboard — June 4, 2026</div>
-        <div class="src-badge">CNBC · REUTERS · FRED · FED.GOV</div>
+        <div class="hdr-title">Macro Dashboard — June 05, 2026</div>
+        <div class="src-badge">FMP API · AUTO-UPDATED DAILY</div>
       </div>
       <div class="cards">
-        <div class="card"><div class="c-lbl">S&P 500</div><div class="c-val up">7,584</div><div class="c-chg up">+0.41% today</div><div class="c-sub">52-wk high: 7,621</div><div class="c-src">Yahoo Finance · Jun 4 close</div></div>
-        <div class="card"><div class="c-lbl">Dow Jones</div><div class="c-val up">51,562</div><div class="c-chg up">+1.73% ALL-TIME HIGH</div><div class="c-sub">+875 pts · Record close</div><div class="c-src">Reuters · CNBC · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">Nasdaq</div><div class="c-val dn">26,831</div><div class="c-chg dn">−0.09% · AVGO drag</div><div class="c-sub">Chips −2.8% today</div><div class="c-src">Yahoo Finance · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">Russell 2000</div><div class="c-val up">2,935</div><div class="c-chg up">+1.45% · Small caps</div><div class="c-sub">Rotation into non-tech</div><div class="c-src">Yahoo Finance · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">Fed Funds Rate</div><div class="c-val fl">3.75%</div><div class="c-chg fl">Held · Apr 28-29 FOMC</div><div class="c-sub">Next meeting: Jun 16-17</div><div class="c-src">Federal Reserve · Apr 2026</div></div>
-        <div class="card"><div class="c-lbl">10Y Treasury</div><div class="c-val fl">4.47%</div><div class="c-chg warn" style="color:var(--amber)">30d range: 4.31–4.69</div><div class="c-sub">ADP +122K beat lifted yields</div><div class="c-src">YCharts · FRED · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">WTI Crude</div><div class="c-val dn">$92.87</div><div class="c-chg dn">−3.28% · Iran deal hopes</div><div class="c-sub">52-wk range: $55–$118</div><div class="c-src">Investing.com · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">Gold Spot</div><div class="c-val up">$4,493</div><div class="c-chg up">+0.50% · Safe haven bid</div><div class="c-sub">ATH: $5,602 on Jan 28</div><div class="c-src">JM Bullion · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">VIX Fear Index</div><div class="c-val fl">15.40</div><div class="c-chg up">−4.11% · Easing</div><div class="c-sub">Below 30-day avg of 16+</div><div class="c-src">Yahoo Finance · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">CPI Inflation</div><div class="c-val" style="color:var(--amber)">2.4%</div><div class="c-chg" style="color:var(--amber)">Jan 2026 · Above 2% target</div><div class="c-sub">May CPI releases Jun 10</div><div class="c-src">BLS.gov · Jan 2026</div></div>
-        <div class="card"><div class="c-lbl">PCE Inflation</div><div class="c-val dn">3.5%</div><div class="c-chg dn">Mar 2026 · Energy-driven</div><div class="c-sub">Core PCE: 3.2%</div><div class="c-src">FOMC Minutes · Apr 2026</div></div>
-        <div class="card"><div class="c-lbl">Rate Hike Prob.</div><div class="c-val dn">85%</div><div class="c-chg dn">Up from 60% last week</div><div class="c-sub">ADP beat + Iran oil</div><div class="c-src">TradingEconomics · Jun 4</div></div>
+        <div class="card"><div class="c-lbl">S&amp;P 500 (SPY)</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">Dow (DIA)</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">Nasdaq (QQQ)</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">Russell 2K (IWM)</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">Fed Funds Rate</div><div class="c-val fl">0.00%</div><div class="c-chg fl">Latest FOMC</div><div class="c-src">FMP Economics API</div></div>
+        <div class="card"><div class="c-lbl">10Y Treasury</div><div class="c-val fl">0.00%</div><div class="c-chg fl">10Y-2Y: +0.00%</div><div class="c-src">FMP Treasury API</div></div>
+        <div class="card"><div class="c-lbl">Gold (GLD)</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">Oil (USO)</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">VIX</div><div class="c-val fl">0.00</div><div class="c-chg fl">+0.00% today</div><div class="c-src">FMP · Jun 05, 2026</div></div>
+        <div class="card"><div class="c-lbl">CPI Inflation</div><div class="c-val" style="color:var(--amber)">0%</div><div class="c-chg" style="color:var(--amber)">Latest release</div><div class="c-src">FMP Economics · </div></div>
+        <div class="card"><div class="c-lbl">Unemployment</div><div class="c-val">0%</div><div class="c-chg fl">Latest release</div><div class="c-src">FMP Economics API</div></div>
+        <div class="card"><div class="c-lbl">10Y-2Y Spread</div><div class="c-val up">+0.00%</div><div class="c-chg up">Positive curve</div><div class="c-src">FMP Treasury API</div></div>
       </div>
       <div class="chart-box">
         <div class="chart-top">
-          <div class="chart-lbl">S&P 500 — Jun 4, 2026 close: 7,584</div>
+          <div class="chart-lbl">S&amp;P 500 (SPY) — Latest: 0.00</div>
           <div class="ctabs">
-            <button class="ctab on" onclick="loadChart('1m',this)">1M</button>
-            <button class="ctab" onclick="loadChart('3m',this)">3M</button>
-            <button class="ctab" onclick="loadChart('6m',this)">6M</button>
-            <button class="ctab" onclick="loadChart('1y',this)">1Y</button>
+            <button class="ctab on" onclick="loadChart(this,'1m')">1M</button>
+            <button class="ctab" onclick="loadChart(this,'3m')">3M</button>
+            <button class="ctab" onclick="loadChart(this,'6m')">6M</button>
           </div>
         </div>
         <canvas id="spxC" height="200"></canvas>
       </div>
       <div class="aip">
-        <div class="aip-top">
-          <div class="hdr-title" style="margin:0">Today's AI Market Intelligence</div>
-          <span class="ai-badge">CLAUDE · LIVE</span>
+        <div class="aip-top"><div class="hdr-title" style="margin:0">AI Market Analysis — June 05, 2026</div><span class="ai-badge">CLAUDE POWERED</span></div>
+        <div class="aip-body" id="macroAI">
+          <b>Loading AI analysis...</b> Click the button below to generate a fresh analysis based on today's live data.
         </div>
-        <div class="aip-body">
-          <b>June 4, 2026 — What Happened Today</b><br><br>
-          Today's defining story is a <span class="hl">sharp sector rotation</span>: investors sold AI chip stocks after Broadcom missed revenue estimates ($22.19B vs $22.27B expected) and kept its full-year AI chip guidance flat at $100B — a number the market had priced in being raised. AVGO fell 12.6%, dragging the Philadelphia Semiconductor Index down 2.8%.<br><br>
-          Where did the money go? <span class="grn">Healthcare (+3.1%) and Financials (+1.8%)</span> — sending the Dow to a fresh all-time high of 51,562. UnitedHealth alone surged 5.2% after Bank of America upgraded it to Buy with a $450 target. JPMorgan rose 3%, Blackstone rebounded 7.5%.<br><br>
-          <b>The bigger macro picture:</b> Fed rate hike probability jumped from 60% to <span class="danger">85% for year-end</span> this week after ADP private payrolls beat at +122K and JOLTS job openings hit their highest since November 2024. With PCE at 3.5% from energy inflation and the Iran conflict keeping oil elevated, the Fed has little room to cut — and may need to hike. The next FOMC is June 16-17.
-        </div>
-        <button onclick="prefill('Explain what happened in markets today June 4 2026 and what investors should watch next')" style="margin-top:12px;background:rgba(155,127,245,.12);border:1px solid rgba(155,127,245,.35);color:var(--purple);font-weight:600;font-size:12px;padding:8px 16px;border-radius:7px;cursor:pointer;">Ask AI for deeper analysis</button>
+        <button onclick="quickAsk('Analyze todays market conditions. S&P 500 is at 0.00 (+0.00%), Nasdaq at 0.00 (+0.00%), VIX at 0.00, 10Y yield at 0.00%, Fed rate at 0.00%, CPI at 0%. What does this mean for investors today?')" style="margin-top:12px;background:rgba(155,127,245,.12);border:1px solid rgba(155,127,245,.35);color:var(--purple);font-weight:600;font-size:12px;padding:8px 16px;border-radius:7px;cursor:pointer;">Generate AI Analysis for Today</button>
       </div>
-      <div class="hdr"><div class="hdr-title">Current Sector Outlook</div></div>
+      <div class="hdr"><div class="hdr-title">Sector Outlook — June 05, 2026</div></div>
       <div class="out-grid">
-        <div class="out-card oc-bull"><div class="oc-lbl">OVERWEIGHT / BULLISH</div><ul class="oc-list"><li>Healthcare — UNH +5.2%, BofA Buy, GLP-1</li><li>Financials — BX +7.5%, JPM +3%, NIM intact</li><li>Industrials — Defense, RTX upgraded to Buy</li><li>Energy — Iran premium; MUR upgraded today</li></ul></div>
-        <div class="out-card oc-neut"><div class="oc-lbl">NEUTRAL / SELECTIVE</div><ul class="oc-list"><li>Technology — Rotation out today; AI intact LT</li><li>Consumer Disc. — Costco +1%, bifurcated</li><li>Materials — Copper volatile; China uncertain</li><li>Comm. Services — Ad recovery mixed</li></ul></div>
-        <div class="out-card oc-bear"><div class="oc-lbl">UNDERWEIGHT / BEARISH</div><ul class="oc-list"><li>Semiconductors — AVGO −12.6%, chips breather</li><li>Real Estate — Rate hike risk surging to 85%</li><li>Utilities — Worst rate-sensitivity position</li><li>Private Credit — BX capped withdrawals</li></ul></div>
+        <div class="out-card oc-bull"><div class="oc-lbl">OVERWEIGHT</div><ul class="oc-list"><li>Top sector: Technology (+0.0%)</li><li>Healthcare (+0.0%)</li><li>Financials (+0.0%)</li></ul></div>
+        <div class="out-card oc-neut"><div class="oc-lbl">NEUTRAL</div><ul class="oc-list"><li>Energy (+0.0%)</li><li>Comm. Services (+0.0%)</li><li>Materials (+0.0%)</li></ul></div>
+        <div class="out-card oc-bear"><div class="oc-lbl">UNDERWEIGHT</div><ul class="oc-list"><li>Utilities (+0.0%)</li><li>Real Estate (+0.0%)</li><li>Consumer Staples (+0.0%)</li></ul></div>
       </div>
     </div>
 
     <!-- SECTORS -->
     <div class="page" id="pg-sectors">
-      <div class="hdr">
-        <div class="hdr-title">Sector Performance — YTD 2026</div>
-        <div class="src-badge">REUTERS · CNBC · Jun 4</div>
-      </div>
-      <div class="sec-grid" id="secGrid"></div>
+      <div class="hdr"><div class="hdr-title">Sector Performance — June 05, 2026</div><div class="src-badge">FMP API · LIVE</div></div>
+      <div class="sec-grid"><div class="sec-card neut" onclick="askSec('Technology')">
+<div class="sec-name">Technology</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Healthcare')">
+<div class="sec-name">Healthcare</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Financials')">
+<div class="sec-name">Financials</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Industrials')">
+<div class="sec-name">Industrials</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Energy')">
+<div class="sec-name">Energy</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Comm. Services')">
+<div class="sec-name">Comm. Services</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Materials')">
+<div class="sec-name">Materials</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Consumer Disc.')">
+<div class="sec-name">Consumer Disc.</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Consumer Staples')">
+<div class="sec-name">Consumer Staples</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Real Estate')">
+<div class="sec-name">Real Estate</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+<div class="sec-card neut" onclick="askSec('Utilities')">
+<div class="sec-name">Utilities</div>
+<div class="sec-perf" style="color:var(--amber)">+0.0%</div>
+<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:0%;background:var(--amber)"></div></div>
+<div class="sec-sig neut">NEUTRAL</div>
+</div>
+</div>
       <div class="aip">
-        <div class="aip-top"><div class="hdr-title" style="margin:0">Sector Rotation — Today</div><span class="ai-badge">CLAUDE</span></div>
-        <div class="aip-body">
-          <b>Today is a textbook rotation day.</b> Money leaving semiconductors (−2.8%) is moving into <span class="hl">Healthcare (+3.1%) and Financials (+1.8%)</span> — the two sectors most insulated from AI valuation risk and most leveraged to the domestic economy.<br><br>
-          <b>Important context:</b> Chip stocks are still up <span class="grn">92% this quarter</span>. Today is profit-taking after flat guidance, not a breakdown in AI demand. NVDA PC chip launch and hyperscaler capex are intact.<br><br>
-          <b>Oil wildcard:</b> If the Iran ceasefire closes, expect a sharp reversal in energy and a consumer/transport boost. Every $10 crude move reshuffles sector rankings.
-        </div>
-        <button onclick="prefill('Which sectors look strongest right now on June 4 2026 and why is there a rotation happening today?')" style="margin-top:12px;background:rgba(155,127,245,.12);border:1px solid rgba(155,127,245,.35);color:var(--purple);font-weight:600;font-size:12px;padding:8px 16px;border-radius:7px;cursor:pointer;">Ask AI about rotation</button>
+        <div class="aip-top"><div class="hdr-title" style="margin:0">Sector Rotation Analysis</div><span class="ai-badge">CLAUDE</span></div>
+        <div class="aip-body">Best sector today: <b>Technology</b> (+0.0%) — Worst: <b>Utilities</b> (+0.0%). Click a sector card to get AI analysis.</div>
+        <button onclick="quickAsk('Analyze current sector rotation as of June 05, 2026. Top sector is Technology at 0.0%, worst is Utilities at 0.0%. What is driving this rotation and what does it signal?')" style="margin-top:12px;background:rgba(155,127,245,.12);border:1px solid rgba(155,127,245,.35);color:var(--purple);font-weight:600;font-size:12px;padding:8px 16px;border-radius:7px;cursor:pointer;">Ask AI about rotation</button>
       </div>
     </div>
 
     <!-- EQUITIES -->
     <div class="page" id="pg-equities">
-      <div class="hdr">
-        <div class="hdr-title">Equity Research — Analyst Actions Jun 4</div>
-        <div class="src-badge">YAHOO FINANCE · REUTERS</div>
+      <div class="hdr"><div class="hdr-title">Equities — Key Movers June 05, 2026</div><div class="src-badge">FMP API</div></div>
+      <div class="filters" id="eqF">
+        <button class="fbtn on" onclick="fEq('all',this)">ALL</button>
+        <button class="fbtn" onclick="fEq('bull',this)">ATTRACTIVE</button>
+        <button class="fbtn" onclick="fEq('bear',this)">RISK</button>
+        <button class="fbtn" onclick="fEq('tech',this)">TECH</button>
+        <button class="fbtn" onclick="fEq('hlth',this)">HEALTHCARE</button>
+        <button class="fbtn" onclick="fEq('fin',this)">FINANCIALS</button>
       </div>
-      <div class="filters" id="eqFilters">
-        <button class="fbtn on" onclick="filterEq('all',this)">ALL</button>
-        <button class="fbtn" onclick="filterEq('bull',this)">ATTRACTIVE</button>
-        <button class="fbtn" onclick="filterEq('bear',this)">RISK</button>
-        <button class="fbtn" onclick="filterEq('tech',this)">TECH</button>
-        <button class="fbtn" onclick="filterEq('hlth',this)">HEALTHCARE</button>
-        <button class="fbtn" onclick="filterEq('fin',this)">FINANCIALS</button>
-      </div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>TICKER</th><th>NAME</th><th>SECTOR</th><th>SIGNAL</th><th>TODAY</th><th>P/E</th><th>NOTE — JUN 4, 2026</th></tr></thead>
-          <tbody id="eqBody"></tbody>
-        </table>
-      </div>
+      <div class="tbl-wrap"><table><thead><tr><th>TICKER</th><th>NAME</th><th>SECTOR</th><th>SIGNAL</th><th>TODAY</th><th>P/E</th><th>NOTE</th></tr></thead><tbody id="eqB"></tbody></table></div>
       <div class="aip">
-        <div class="aip-top"><div class="hdr-title" style="margin:0">Analyst Actions Today</div><span class="ai-badge">SOURCED: YAHOO FINANCE</span></div>
-        <div class="aip-body">
-          <b>Upgrades Jun 4:</b> <span class="grn">UNH to Buy at BofA ($450 target). RTX to Buy at Jefferies ($220). MDT to Buy at BTIG ($90). MUR to Overweight at KeyBanc ($48). PAA to Neutral at Goldman ($24).</span><br><br>
-          <b>Downgrades Jun 4:</b> <span class="danger">AVGO to Neutral at Macquarie ($437 target)</span> after revenue miss and unchanged AI guidance. CMS Energy to Hold at Jefferies.<br><br>
-          <b>Biggest event:</b> SpaceX IPO roadshow began today. $135/share, $1.75T valuation, June 12 debut. Retail investors can express interest via Robinhood and SoFi now.<br><br>
-          <i style="font-size:11px;color:var(--text3)">For research purposes only. Not personalized investment advice.</i>
-        </div>
+        <div class="aip-top"><div class="hdr-title" style="margin:0">Equity Intelligence</div><span class="ai-badge">CLAUDE</span></div>
+        <div class="aip-body">Click any row to get AI analysis on that stock. Data updates every trading day automatically.</div>
       </div>
     </div>
 
     <!-- RATES -->
     <div class="page" id="pg-rates">
-      <div class="hdr">
-        <div class="hdr-title">Fixed Income &amp; Yield Curve — Jun 4, 2026</div>
-        <div class="src-badge">YCHARTS · FRED · FED.GOV</div>
-      </div>
+      <div class="hdr"><div class="hdr-title">Fixed Income — June 05, 2026</div><div class="src-badge">FMP TREASURY API</div></div>
       <div class="yield-row">
-        <div class="yc"><div class="yc-t">3M</div><div class="yc-v fl">3.62%</div><div class="yc-c fl">0.00</div></div>
-        <div class="yc"><div class="yc-t">1Y</div><div class="yc-v fl">3.85%</div><div class="yc-c dn">−0.01</div></div>
-        <div class="yc"><div class="yc-t">2Y</div><div class="yc-v fl">4.05%</div><div class="yc-c dn">−0.02</div></div>
-        <div class="yc"><div class="yc-t">5Y</div><div class="yc-v fl">4.28%</div><div class="yc-c dn">−0.02</div></div>
-        <div class="yc"><div class="yc-t">10Y</div><div class="yc-v fl">4.47%</div><div class="yc-c dn">−0.01</div></div>
-        <div class="yc"><div class="yc-t">20Y</div><div class="yc-v fl">4.81%</div><div class="yc-c up">+0.01</div></div>
-        <div class="yc"><div class="yc-t">30Y</div><div class="yc-v fl">4.73%</div><div class="yc-c up">+0.01</div></div>
+        <div class="yc"><div class="yc-t">3M</div><div class="yc-v fl">0.00%</div></div>
+        <div class="yc"><div class="yc-t">1Y</div><div class="yc-v fl">0.00%</div></div>
+        <div class="yc"><div class="yc-t">2Y</div><div class="yc-v fl">0.00%</div></div>
+        <div class="yc"><div class="yc-t">5Y</div><div class="yc-v fl">0.00%</div></div>
+        <div class="yc"><div class="yc-t">10Y</div><div class="yc-v fl">0.00%</div></div>
+        <div class="yc"><div class="yc-t">30Y</div><div class="yc-v fl">0.00%</div></div>
       </div>
       <div class="chart-box">
-        <div class="chart-top"><div class="chart-lbl">Yield Curve Shape — June 4, 2026</div></div>
+        <div class="chart-top"><div class="chart-lbl">Yield Curve — June 05, 2026</div></div>
         <canvas id="ycC" height="180"></canvas>
       </div>
       <div class="cards">
-        <div class="card"><div class="c-lbl">Fed Funds Rate</div><div class="c-val fl">3.75%</div><div class="c-chg fl">Held — Apr 28-29</div><div class="c-sub">Next FOMC: Jun 16-17</div><div class="c-src">Federal Reserve</div></div>
-        <div class="card"><div class="c-lbl">Hike Probability</div><div class="c-val dn">85%</div><div class="c-chg dn">Up from 60% last week</div><div class="c-sub">Year-end market pricing</div><div class="c-src">TradingEconomics · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">10Y-2Y Spread</div><div class="c-val up">+0.42%</div><div class="c-chg up">Curve re-steepened</div><div class="c-sub">No longer inverted</div><div class="c-src">Investing.com · Jun 4</div></div>
-        <div class="card"><div class="c-lbl">PCE Inflation</div><div class="c-val dn">3.5%</div><div class="c-chg dn">Mar 2026 · Energy surge</div><div class="c-sub">Core PCE: 3.2%</div><div class="c-src">FOMC Minutes · Apr 2026</div></div>
+        <div class="card"><div class="c-lbl">Fed Funds Rate</div><div class="c-val fl">0.00%</div><div class="c-chg fl">Latest FOMC decision</div><div class="c-src">Federal Reserve / FMP</div></div>
+        <div class="card"><div class="c-lbl">10Y-2Y Spread</div><div class="c-val up">+0.00%</div><div class="c-chg up">Steepening</div><div class="c-src">FMP Treasury API</div></div>
+        <div class="card"><div class="c-lbl">CPI Inflation</div><div class="c-val" style="color:var(--amber)">0%</div><div class="c-chg" style="color:var(--amber)">Latest release</div><div class="c-src">FMP Economics · </div></div>
+        <div class="card"><div class="c-lbl">Unemployment</div><div class="c-val">0%</div><div class="c-chg fl">Latest release</div><div class="c-src">FMP Economics API</div></div>
       </div>
       <div class="aip">
         <div class="aip-top"><div class="hdr-title" style="margin:0">Rates Intelligence</div><span class="ai-badge">CLAUDE</span></div>
-        <div class="aip-body">
-          <b>Critical shift this week:</b> Rate hike probability jumped from 60% to <span class="danger">85% for year-end</span> after ADP private payrolls came in at +122K (beat) and JOLTS job openings hit the highest since November 2024. Combined with PCE at 3.5% from energy, the Fed has little room to cut.<br><br>
-          <b>Yield curve:</b> The 10Y-2Y spread has re-steepened to positive territory — a big change from years of inversion. This typically signals either improving growth or rising long-end inflation expectations. Given PCE at 3.5%, <span class="warn">likely the latter</span>.<br><br>
-          <b>What this means:</b> Rate-sensitive sectors (REITs, Utilities, long-duration growth) face headwinds. Short-duration assets and Financials benefit. The June 16-17 FOMC is the single biggest near-term market catalyst.
-        </div>
-        <button onclick="prefill('What is the yield curve signaling about the economy right now and what does the 85% rate hike probability mean for investors?')" style="margin-top:12px;background:rgba(155,127,245,.12);border:1px solid rgba(155,127,245,.35);color:var(--purple);font-weight:600;font-size:12px;padding:8px 16px;border-radius:7px;cursor:pointer;">Ask AI about rates</button>
+        <div class="aip-body">10Y yield: <b>0.00%</b> · Fed rate: <b>0.00%</b> · Spread: <b>+0.00%</b> · CPI: <b>0%</b></div>
+        <button onclick="quickAsk('Analyze the current interest rate environment as of June 05, 2026. Fed rate is 0.00%, 10Y yield is 0.00%, 2Y yield is 0.00%, 10Y-2Y spread is +0.00%, CPI is 0%. What does this mean for bonds, stocks, and the economy?')" style="margin-top:12px;background:rgba(155,127,245,.12);border:1px solid rgba(155,127,245,.35);color:var(--purple);font-weight:600;font-size:12px;padding:8px 16px;border-radius:7px;cursor:pointer;">Ask AI about rates</button>
       </div>
     </div>
 
     <!-- NEWS -->
     <div class="page" id="pg-news">
-      <div class="hdr">
-        <div class="hdr-title">Market News — June 4, 2026</div>
-        <div class="src-badge">CNBC · REUTERS · THESTREET</div>
-      </div>
-      <div class="filters" id="newsFilters">
-        <button class="fbtn on" onclick="filterNews('all',this)">ALL</button>
-        <button class="fbtn" onclick="filterNews('eqt',this)">EQUITIES</button>
-        <button class="fbtn" onclick="filterNews('geo',this)">GEOPOLITICAL</button>
-        <button class="fbtn" onclick="filterNews('mac',this)">MACRO</button>
-        <button class="fbtn" onclick="filterNews('cmd',this)">COMMODITIES</button>
-        <button class="fbtn" onclick="filterNews('rat',this)">RATES</button>
-      </div>
-      <div class="news-list" id="newsList"></div>
+      <div class="hdr"><div class="hdr-title">Market News — June 05, 2026</div><div class="src-badge">FMP NEWS API · LIVE</div></div>
+      <div class="news-list"></div>
     </div>
 
-    <!-- AI RESEARCH -->
+    <!-- AI -->
     <div class="page" id="pg-ai">
-      <div class="hdr"><div class="hdr-title">AI Research Assistant — Claude</div></div>
+      <div class="hdr"><div class="hdr-title">AI Research — Claude</div></div>
       <div class="ask-wrap">
-        <input class="ask-in" id="askIn" placeholder="Ask anything: Why did the Dow hit a record? Is the AI trade over? What should I watch at the June FOMC?" onkeydown="if(event.key==='Enter')runAsk()">
+        <input class="ask-in" id="askIn" placeholder="Ask anything about today's markets..." onkeydown="if(event.key==='Enter')runAsk()">
         <button class="ask-go" id="askBtn" onclick="runAsk()">Ask Claude</button>
       </div>
       <div class="ai-out" id="aiOut"></div>
-      <div class="hdr" style="margin-top:4px"><div class="hdr-title">Suggested Questions</div></div>
+      <div class="hdr"><div class="hdr-title">Suggested Questions</div></div>
       <div class="sq-pills">
-        <button class="sq" onclick="prefill('Why did the Dow hit a record high today while the Nasdaq fell on June 4 2026?')">Why Dow record + Nasdaq down?</button>
-        <button class="sq" onclick="prefill('What does Broadcom missing earnings mean for the AI trade in 2026?')">Is the AI trade in trouble?</button>
-        <button class="sq" onclick="prefill('What is happening with the US-Iran conflict and how is it affecting oil and markets?')">Iran war impact on markets?</button>
-        <button class="sq" onclick="prefill('Rate hike probability jumped to 85% — what does that mean for stocks and bonds?')">What does 85% hike prob mean?</button>
-        <button class="sq" onclick="prefill('UnitedHealth jumped 5.2% today — why and is healthcare a buy right now?')">Why is healthcare surging?</button>
-        <button class="sq" onclick="prefill('SpaceX IPO is June 12 at $135 per share and $1.75 trillion valuation — is that reasonable?')">SpaceX IPO worth it?</button>
-        <button class="sq" onclick="prefill('Gold is at $4,493 after hitting $5,602 in January — where is it headed?')">Where is gold headed?</button>
-        <button class="sq" onclick="prefill('What sectors look best to invest in right now given todays rotation on June 4 2026?')">Best sectors right now?</button>
-        <button class="sq" onclick="prefill('What should I watch at the June 16-17 Federal Reserve FOMC meeting?')">What to watch at FOMC?</button>
+        <button class="sq" onclick="prefill('What is driving the market today June 05, 2026?')">What is driving the market today?</button>
+        <button class="sq" onclick="prefill('Which sectors look strongest right now and why?')">Which sectors look strongest?</button>
+        <button class="sq" onclick="prefill('What does the current yield curve tell us about the economy?')">What is the yield curve signaling?</button>
+        <button class="sq" onclick="prefill('Is the Fed likely to raise or cut rates next? What does the data say?')">What will the Fed do next?</button>
+        <button class="sq" onclick="prefill('What are the biggest market risks to watch right now?')">Biggest risks right now?</button>
+        <button class="sq" onclick="prefill('What sectors are best positioned given current inflation and rate environment?')">Best sectors for this environment?</button>
       </div>
       <div id="resHist" style="display:flex;flex-direction:column;gap:12px"></div>
     </div>
 
   </main>
 </div>
-
 <footer>
-  <div>SIGNAL · Sources: CNBC, Reuters, Yahoo Finance, Federal Reserve, BLS, TradingEconomics, YCharts, JM Bullion, TheStreet · June 4, 2026 · Not investment advice</div>
+  <div>SIGNAL · Auto-updated daily via GitHub Actions · Data: Financial Modeling Prep API · June 05, 2026 · Not investment advice</div>
   <div id="ftTime"></div>
 </footer>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-// CLOCK
-function tick(){
-  var n=new Date();
-  var t=n.toLocaleTimeString('en-US',{timeZone:'America/New_York',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
-  document.getElementById('clk').textContent=t+' EST';
-  document.getElementById('ftTime').textContent='Updated: '+n.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+' '+t;
-}
+function tick(){var n=new Date();var t=n.toLocaleTimeString("en-US",{timeZone:"America/New_York",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});document.getElementById("clk").textContent=t+" EST";document.getElementById("ftTime").textContent="Built: June 05, 2026 · "+t;}
 tick();setInterval(tick,1000);
-
-// NAV
-function go(id,btn){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('on');});
-  document.getElementById('pg-'+id).classList.add('on');
-  if(btn){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});btn.classList.add('on');}
-  document.querySelectorAll('.side-item').forEach(function(s){s.classList.remove('on');});
-  if(id==='macro'||id==='sectors'||id==='equities'){document.querySelector('.side-item').classList.add('on');}
-  if(id==='sectors'&&!window.S)buildSectors();
-  if(id==='equities'&&!window.E)buildEquities();
-  if(id==='rates'&&!window.R)buildYC();
-  if(id==='news'&&!window.N)buildNews();
-}
-
-// TICKER
+function go(id,btn){document.querySelectorAll(".page").forEach(function(p){p.classList.remove("on");});document.getElementById("pg-"+id).classList.add("on");if(btn){document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("on");});btn.classList.add("on");}if(id==="rates"&&!window.YC)buildYC();}
 var TICKS=[
-  {s:'S&P 500',v:'7,584.31',c:'+0.41%',u:true},
-  {s:'DOW RECORD',v:'51,561.93',c:'+1.73%',u:true},
-  {s:'NASDAQ',v:'26,830.96',c:'-0.09%',u:false},
-  {s:'RUSSELL 2K',v:'2,935.33',c:'+1.45%',u:true},
-  {s:'VIX',v:'15.40',c:'-4.11%',u:false},
-  {s:'10Y YIELD',v:'4.47%',c:'-0.01',u:false},
-  {s:'WTI CRUDE',v:'$92.87',c:'-3.28%',u:false},
-  {s:'BRENT',v:'$96.97',c:'-0.86%',u:false},
-  {s:'GOLD',v:'$4,493',c:'+0.50%',u:true},
-  {s:'FED RATE',v:'3.75%',c:'HELD',u:true},
-  {s:'AVGO',v:'BROADCOM',c:'-12.6% MISS',u:false},
-  {s:'UNH',v:'UNITEDHEALTH',c:'+5.2% BOFA BUY',u:true},
-  {s:'BX',v:'BLACKSTONE',c:'+7.5%',u:true},
-  {s:'BITCOIN',v:'$63,881',c:'-3.12%',u:false},
-  {s:'SPACEX IPO',v:'JUN 12',c:'$135/SH $1.75T',u:true},
-  {s:'SILVER',v:'$75.38',c:'+3.08%',u:true},
+  {s:"S&P 500",v:"0.00",c:"+0.00%",u:true},
+  {s:"DOW",v:"0.00",c:"+0.00%",u:true},
+  {s:"NASDAQ",v:"0.00",c:"+0.00%",u:true},
+  {s:"RUSSELL 2K",v:"0.00",c:"+0.00%",u:true},
+  {s:"VIX",v:"0.00",c:"+0.00%",u:false},
+  {s:"10Y YIELD",v:"0.00%",c:"Treasury",u:true},
+  {s:"GOLD",v:"0.00",c:"+0.00%",u:true},
+  {s:"OIL",v:"0.00",c:"+0.00%",u:true},
+  {s:"FED RATE",v:"0.00%",c:"FOMC",u:true},
+  {s:"CPI",v:"0%",c:"Inflation",u:true},
 ];
-(function(){
-  var el=document.getElementById('tkr');
-  var html='';
-  var all=TICKS.concat(TICKS);
-  for(var i=0;i<all.length;i++){
-    var d=all[i];
-    var cls=d.u?'up':'dn';
-    html+='<span class="tick"><span class="ts">'+d.s+'</span><span class="tv">'+d.v+'</span><span class="'+cls+'">'+d.c+'</span></span>';
-  }
-  el.innerHTML=html;
-})();
-
-// SPX CHART
-var spxChart=null;
-var SPX={
-  '1m':[7220,7180,7310,7380,7290,7410,7450,7510,7490,7560,7530,7600,7553,7584],
-  '3m':[6850,6920,7010,7080,6990,7120,7200,7280,7310,7220,7380,7450,7510,7553,7584],
-  '6m':[6400,6520,6310,6680,6750,6820,6900,7010,7080,7150,7220,7380,7450,7553,7584],
-  '1y':[5921,6100,6280,6450,6600,6750,6900,7010,7080,7200,7310,7450,7553,7584]
-};
-function loadChart(r,btn){
-  document.querySelectorAll('.ctab').forEach(function(t){t.classList.remove('on');});
-  if(btn)btn.classList.add('on');
-  var pts=SPX[r];
-  var n=pts.length;
-  var labels=[];
-  var base=new Date('2026-06-04');
-  var step=r==='1m'?1:r==='3m'?3:r==='6m'?5:28;
-  for(var i=n-1;i>=0;i--){var d=new Date(base);d.setDate(d.getDate()-i*step);labels.push(d.toLocaleDateString('en-US',{month:'short',day:'numeric'}));}
-  if(spxChart)spxChart.destroy();
-  var ctx=document.getElementById('spxC').getContext('2d');
-  var up=pts[pts.length-1]>=pts[0];
-  var col=up?'rgba(61,214,140,1)':'rgba(240,107,107,1)';
-  var grad=ctx.createLinearGradient(0,0,0,200);
-  grad.addColorStop(0,up?'rgba(61,214,140,.18)':'rgba(240,107,107,.18)');
-  grad.addColorStop(1,'rgba(0,0,0,0)');
-  spxChart=new Chart(ctx,{
-    type:'line',
-    data:{labels:labels,datasets:[{data:pts,borderColor:col,borderWidth:1.5,pointRadius:0,fill:true,backgroundColor:grad,tension:.35}]},
-    options:{responsive:true,animation:{duration:400},plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'rgba(14,20,32,.97)',borderColor:'rgba(28,42,62,.8)',borderWidth:1,callbacks:{label:function(c){return 'S&P 500: '+c.parsed.y.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}}}},scales:{x:{grid:{color:'rgba(28,42,62,.5)',borderDash:[2,4]},ticks:{color:'#3d5068',font:{family:'IBM Plex Mono',size:10},maxTicksLimit:7}},y:{grid:{color:'rgba(28,42,62,.5)',borderDash:[2,4]},ticks:{color:'#3d5068',font:{family:'IBM Plex Mono',size:10},callback:function(v){return v.toLocaleString('en-US');}},position:'right'}}}
-  });
-}
-loadChart('1m',null);
-
-// YIELD CURVE CHART
-function buildYC(){
-  window.R=true;
-  var tenors=['3M','1Y','2Y','5Y','10Y','20Y','30Y'];
-  var yields=[3.62,3.85,4.05,4.28,4.47,4.81,4.73];
-  var ctx=document.getElementById('ycC').getContext('2d');
-  var grad=ctx.createLinearGradient(0,0,0,180);
-  grad.addColorStop(0,'rgba(96,165,250,.15)');
-  grad.addColorStop(1,'rgba(0,0,0,0)');
-  new Chart(ctx,{
-    type:'line',
-    data:{labels:tenors,datasets:[{data:yields,borderColor:'rgba(96,165,250,.9)',borderWidth:2,pointRadius:5,pointBackgroundColor:'rgba(96,165,250,1)',fill:true,backgroundColor:grad,tension:.2}]},
-    options:{responsive:true,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(14,20,32,.97)',callbacks:{label:function(c){return c.parsed.y.toFixed(2)+'%';}}}},scales:{x:{grid:{color:'rgba(28,42,62,.5)'},ticks:{color:'#3d5068',font:{family:'IBM Plex Mono',size:10}}},y:{grid:{color:'rgba(28,42,62,.5)'},ticks:{color:'#3d5068',font:{family:'IBM Plex Mono',size:10},callback:function(v){return v.toFixed(2)+'%';}},min:3.4,max:5.0,position:'right'}}}
-  });
-}
-
-// SECTORS
-var SECS=[
-  {n:'Technology',y:18.2,s:'bull',d:'AI infrastructure, NVDA PC chips; chips -2.8% today on AVGO miss'},
-  {n:'Healthcare',y:14.1,s:'bull',d:'UNH +5.2% BofA upgrade, GLP-1 drugs, LLY +4% today'},
-  {n:'Financials',y:11.8,s:'bull',d:'BX +7.5%, JPM +3%, NIM expansion; rotation in today'},
-  {n:'Industrials',y:9.4,s:'bull',d:'Defense spending, reshoring; RTX upgraded to Buy today'},
-  {n:'Energy',y:6.2,s:'neut',d:'Iran premium; WTI -3% on ceasefire hopes; MUR upgraded'},
-  {n:'Comm. Services',y:3.8,s:'neut',d:'Digital ad recovery; AI monetization mixed'},
-  {n:'Materials',y:2.1,s:'neut',d:'Copper volatile; China demand uncertainty'},
-  {n:'Consumer Disc.',y:1.4,s:'neut',d:'Costco +1%; bifurcated by income level'},
-  {n:'Consumer Staples',y:-1.9,s:'bear',d:'Margin pressure; private label competition rising'},
-  {n:'Real Estate',y:-3.4,s:'bear',d:'Rate hike risk at 85%; CRE refinancing stress'},
-  {n:'Utilities',y:-4.8,s:'bear',d:'Bond proxy vs 85% hike probability; worst position'}
-];
-function buildSectors(){
-  window.S=true;
-  var g=document.getElementById('secGrid');
-  var mx=0;
-  for(var i=0;i<SECS.length;i++){if(Math.abs(SECS[i].y)>mx)mx=Math.abs(SECS[i].y);}
-  var html='';
-  for(var i=0;i<SECS.length;i++){
-    var s=SECS[i];
-    var sg=s.y>=0?'+':'';
-    var col=s.s==='bull'?'var(--green)':(s.s==='bear'?'var(--red)':'var(--amber)');
-    var w=Math.round(Math.abs(s.y)/mx*100);
-    var lbl=s.s==='bull'?'OVERWEIGHT':(s.s==='bear'?'UNDERWEIGHT':'NEUTRAL');
-    html+='<div class="sec-card '+s.s+'" onclick="askSec(\''+s.n.replace(/'/g,'')+'\')">';
-    html+='<div class="sec-name">'+s.n+'</div>';
-    html+='<div class="sec-perf" style="color:'+col+'">'+sg+s.y.toFixed(1)+'%</div>';
-    html+='<div class="sec-bar-bg"><div class="sec-bar-fill" style="width:'+w+'%;background:'+col+'"></div></div>';
-    html+='<div class="sec-sig '+s.s+'">'+lbl+'</div>';
-    html+='<div class="sec-drv">'+s.d+'</div>';
-    html+='</div>';
-  }
-  g.innerHTML=html;
-}
-function askSec(n){go('ai',null);prefill('Analyze the '+n+' sector as of June 4 2026: what happened today, current outlook, key drivers, and risks.');}
-
-// EQUITIES
+(function(){var el=document.getElementById("tkr");var html="";var all=TICKS.concat(TICKS);for(var i=0;i<all.length;i++){var d=all[i];html+="<span class=\"tick\"><span class=\"ts\">"+d.s+"</span><span class=\"tv\">"+d.v+"</span><span class=\""+(d.u?"up":"dn")+"\">"+d.c+"</span></span>";}el.innerHTML=html;})();
+var spxC=null;
+var SPX={"1m":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"3m":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"6m":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]};
+function loadChart(btn,r){document.querySelectorAll(".ctab").forEach(function(t){t.classList.remove("on");});if(btn)btn.classList.add("on");var pts=SPX[r];var n=pts.length;var labels=[];var base=new Date();var step=r==="1m"?1:(r==="3m"?3:5);for(var i=n-1;i>=0;i--){var d=new Date(base);d.setDate(d.getDate()-i*step);labels.push(d.toLocaleDateString("en-US",{month:"short",day:"numeric"}));}if(spxC)spxC.destroy();var ctx=document.getElementById("spxC").getContext("2d");var up=pts[pts.length-1]>=pts[0];var col=up?"rgba(61,214,140,1)":"rgba(240,107,107,1)";var grad=ctx.createLinearGradient(0,0,0,200);grad.addColorStop(0,up?"rgba(61,214,140,.18)":"rgba(240,107,107,.18)");grad.addColorStop(1,"rgba(0,0,0,0)");spxC=new Chart(ctx,{type:"line",data:{labels:labels,datasets:[{data:pts,borderColor:col,borderWidth:1.5,pointRadius:0,fill:true,backgroundColor:grad,tension:.35}]},options:{responsive:true,animation:{duration:400},plugins:{legend:{display:false}},scales:{x:{grid:{color:"rgba(28,42,62,.5)",borderDash:[2,4]},ticks:{color:"#3d5068",font:{family:"IBM Plex Mono",size:10},maxTicksLimit:7}},y:{grid:{color:"rgba(28,42,62,.5)",borderDash:[2,4]},ticks:{color:"#3d5068",font:{family:"IBM Plex Mono",size:10},callback:function(v){return v.toLocaleString();}},position:"right"}}}});}
+loadChart(null,"1m");
+function buildYC(){window.YC=true;var tenors=["3M","1Y","2Y","5Y","10Y","30Y"];var yields=[0.00,0.00,0.00,0.00,0.00,0.00];var ctx=document.getElementById("ycC").getContext("2d");var grad=ctx.createLinearGradient(0,0,0,180);grad.addColorStop(0,"rgba(96,165,250,.15)");grad.addColorStop(1,"rgba(0,0,0,0)");new Chart(ctx,{type:"line",data:{labels:tenors,datasets:[{data:yields,borderColor:"rgba(96,165,250,.9)",borderWidth:2,pointRadius:5,pointBackgroundColor:"rgba(96,165,250,1)",fill:true,backgroundColor:grad,tension:.2}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{grid:{color:"rgba(28,42,62,.5)"},ticks:{color:"#3d5068",font:{family:"IBM Plex Mono",size:10}}},y:{grid:{color:"rgba(28,42,62,.5)"},ticks:{color:"#3d5068",font:{family:"IBM Plex Mono",size:10},callback:function(v){return v.toFixed(2)+"%";}},position:"right"}}}});}
 var EQ=[
-  {t:'UNH',n:'UnitedHealth Group',sec:'hlth',s:'bull',c:'+5.2%',p:'22x',note:'BofA upgraded to BUY, target $450. Leading Dow rally today.'},
-  {t:'JPM',n:'JPMorgan Chase',sec:'fin',s:'bull',c:'+3.0%',p:'13x',note:'Rallied in financial rotation. Strong NIM environment.'},
-  {t:'BX',n:'Blackstone',sec:'fin',s:'bull',c:'+7.5%',p:'28x',note:'Rebounded after capping private credit withdrawals — market viewed as prudent.'},
-  {t:'LLY',n:'Eli Lilly',sec:'hlth',s:'bull',c:'+4.0%',p:'58x',note:'Healthcare rotation; GLP-1 demand continues strong.'},
-  {t:'RTX',n:'RTX Corp',sec:'ind',s:'bull',c:'+1.2%',p:'19x',note:'Upgraded to BUY at Jefferies, target $220. Defense thesis intact.'},
-  {t:'MDT',n:'Medtronic',sec:'hlth',s:'bull',c:'+2.1%',p:'17x',note:'Upgraded to BUY at BTIG Research, target $90.'},
-  {t:'NVDA',n:'Nvidia',sec:'tech',s:'bull',c:'-1.4%',p:'38x',note:'Dipped in chip selloff; PC chip launch intact. AI thesis unbroken.'},
-  {t:'COST',n:'Costco',sec:'cons',s:'bull',c:'+1.0%',p:'52x',note:'Resilient consumer; benefiting from market rotation.'},
-  {t:'AVGO',n:'Broadcom',sec:'tech',s:'bear',c:'-12.6%',p:'35x',note:'Downgraded to Neutral at Macquarie, $437 target. Revenue miss, flat AI guidance.'},
-  {t:'CRWD',n:'CrowdStrike',sec:'tech',s:'bear',c:'-3.8%',p:'88x',note:'Slumped on rising quarterly operating expenses.'},
-  {t:'MU',n:'Micron Technology',sec:'tech',s:'bear',c:'-2.1%',p:'20x',note:'Caught in semiconductor selloff following AVGO miss.'},
-  {t:'INTC',n:'Intel',sec:'tech',s:'bear',c:'-4.2%',p:'NM',note:'Lost PC chip market share to NVDA. Structural competitive pressure.'},
+  {t:"SPY",n:"S&P 500 ETF",sec:"idx",s:"bull",c:"+0.00%",p:"N/A",note:"Broad market index. +0.00% today."},
+  {t:"QQQ",n:"Nasdaq 100 ETF",sec:"tech",s:"fl",c:"+0.00%",p:"N/A",note:"Tech-heavy index. +0.00% today."},
+  {t:"GLD",n:"Gold ETF",sec:"cmd",s:"fl",c:"+0.00%",p:"N/A",note:"Gold spot proxy. +0.00% today."},
+  {t:"TLT",n:"20Y Treasury ETF",sec:"rat",s:"neut",c:"--",p:"N/A",note:"Long-duration bond proxy. Rate sensitive."},
+  {t:"VXX",n:"VIX Short-Term",sec:"idx",s:"neut",c:"+0.00%",p:"N/A",note:"Volatility index: 0.00. +0.00% today."},
 ];
-var eqF='all';
-function filterEq(f,btn){
-  eqF=f;
-  document.querySelectorAll('#eqFilters .fbtn').forEach(function(b){b.classList.remove('on');});
-  btn.classList.add('on');
-  renderEq();
-}
-function secN(s){return{tech:'Technology',hlth:'Healthcare',fin:'Financials',ind:'Industrials',cons:'Consumer'}[s]||s;}
-function renderEq(){
-  var rows=eqF==='all'?EQ:EQ.filter(function(e){return e.sec===eqF||e.s===eqF;});
-  var html='';
-  for(var i=0;i<rows.length;i++){
-    var e=rows[i];
-    var chgCol=e.c.charAt(0)==='+' ? 'var(--green)' : 'var(--red)';
-    var sigLbl=e.s==='bull'?'ATTRACTIVE':(e.s==='bear'?'RISK':'WATCH');
-    html+='<tr onclick="askTicker(\''+e.t+'\',\''+e.n.replace(/'/g,'')+'\')"><td class="t-tick">'+e.t+'</td><td class="t-name">'+e.n+'</td><td style="color:var(--text3);font-size:11px">'+secN(e.sec)+'</td><td><span class="bdg '+e.s+'">'+sigLbl+'</span></td><td style="color:'+chgCol+';font-weight:600">'+e.c+'</td><td>'+e.p+'</td><td style="font-size:11px;color:var(--text3);max-width:260px;white-space:normal;line-height:1.4">'+e.note+'</td></tr>';
-  }
-  document.getElementById('eqBody').innerHTML=html;
-}
-function buildEquities(){window.E=true;renderEq();}
-function askTicker(t,n){go('ai',null);prefill('Give me a research summary on '+n+' ('+t+') as of June 4 2026: what happened today, fundamentals, risks, and analyst view.');}
-
-// NEWS
-var NEWS=[
-  {tag:'eqt',src:'Reuters / CNBC · Jun 4',hl:'Dow Jones hits all-time record close of 51,562 (+1.73%) as investors rotate into healthcare and financials',imp:'<b>What happened:</b> Healthcare +3.1%, Financials +1.8% led. UNH +5.2%, JPM +3%, BX +7.5%. <span class="bull-t">Bullish:</span> Healthcare, financials, industrials, small caps. <span class="bear-t">Bearish:</span> AI chip concentration trade near-term.'},
-  {tag:'eqt',src:'Reuters / Yahoo Finance · Jun 4',hl:'Broadcom (AVGO) plunges 12.6% after Q2 revenue miss and unchanged $100B AI chip guidance disappoints',imp:'<b>What happened:</b> Revenue $22.19B vs $22.27B expected. Macquarie cut to Neutral, $437 target. Chips up 92% this quarter — market wanted acceleration. <span class="bear-t">Bearish:</span> AVGO, semiconductor ETFs, MU, AMD. <span class="bull-t">Bullish:</span> Healthy reset creates rotation opportunity.'},
-  {tag:'geo',src:'ABC News / Reuters · Jun 4',hl:'US House passes 215-208 war powers resolution limiting Iran military operations; Trump dismisses it as "meaningless"',imp:'<span class="bull-t">Bullish:</span> Oil fell 3% on ceasefire hopes. Broader market relief. <span class="bear-t">Risk:</span> Trump dismissed resolution; conflict unresolved. Strait of Hormuz shipping still subdued.'},
-  {tag:'eqt',src:'Globe and Mail / Reuters · Jun 4',hl:'SpaceX IPO roadshow begins at $135/share, $1.75 trillion valuation — retail can express interest via Robinhood and SoFi for June 12 debut',imp:'<span class="bull-t">Bullish:</span> HOOD and SOFI could see retail inflows. Historic listing. <span class="bear-t">Risk:</span> $1.75T is the largest IPO valuation ever — concentration risk if retail overloads.'},
-  {tag:'rat',src:'TradingEconomics · Jun 4',hl:'Fed rate hike probability surges to 85% for year-end after ADP private payrolls +122K beat and JOLTS openings hit highest since Nov 2024',imp:'<span class="bear-t">Bearish:</span> REITs, utilities, long-duration bonds, rate-sensitive growth. <span class="bull-t">Bullish:</span> Financials, short-duration instruments, money market funds.'},
-  {tag:'mac',src:'Federal Reserve · Jun 4',hl:'Fed Schmidt: "Inflation is too high; it has been a five-year fight and the Fed is still trying to figure it out"',imp:'<span class="bear-t">Bearish:</span> Any equity segment dependent on rate cuts. <span class="warn">Watch:</span> June 16-17 FOMC is the key near-term catalyst.'},
-  {tag:'cmd',src:'Investing.com / TradingEconomics · Jun 4',hl:'WTI crude falls 3.3% to $92.87 and Brent slips to $96.97 on Iran ceasefire hopes; US inventories fell for sixth consecutive week',imp:'<span class="bull-t">Bullish:</span> Airlines, consumer spending, transportation. <span class="bear-t">Bearish:</span> E&P names on lower prices. Oil still +48% vs year ago — inflation risk remains structural.'},
-  {tag:'eqt',src:'Yahoo Finance · Jun 4',hl:'Analyst actions: UNH upgraded to Buy (BofA $450), RTX to Buy (Jefferies $220), MDT to Buy (BTIG $90); AVGO cut to Neutral (Macquarie $437)',imp:'<span class="bull-t">Bullish:</span> Healthcare, defense, energy E&P today. <span class="bear-t">Bearish:</span> Semiconductor sector on AVGO pressure and analyst caution.'},
-];
-var newsF='all';
-function filterNews(f,btn){
-  newsF=f;
-  document.querySelectorAll('#newsFilters .fbtn').forEach(function(b){b.classList.remove('on');});
-  btn.classList.add('on');
-  renderNews();
-}
-function renderNews(){
-  var items=newsF==='all'?NEWS:NEWS.filter(function(n){return n.tag===newsF;});
-  var html='';
-  for(var i=0;i<items.length;i++){
-    var n=items[i];
-    html+='<div class="news-item"><span class="ntag '+n.tag+'">'+n.tag.toUpperCase()+'</span><div><div class="n-hl">'+n.hl+'</div><div class="n-meta">'+n.src+'</div><div class="n-imp">'+n.imp+'</div></div></div>';
-  }
-  document.getElementById('newsList').innerHTML=html;
-}
-function buildNews(){window.N=true;renderNews();}
-
-// AI RESEARCH
-var SYS = 'You are SIGNAL, a financial intelligence platform. Real verified data from June 4 2026:\n\nMARKET CLOSE:\nS&P 500: 7,584.31 (+0.41%) — Yahoo Finance\nDow Jones: 51,561.93 (+1.73%) ALL-TIME RECORD — Reuters/CNBC\nNasdaq: 26,830.96 (-0.09%) — Yahoo Finance\nRussell 2000: 2,935.33 (+1.45%)\nVIX: 15.40 (-4.11%)\n10Y Treasury: 4.47% — YCharts/FRED\nWTI Crude: $92.87 (-3.28%) — Investing.com\nBrent: $96.97 (-0.86%)\nGold Spot: $4,493/oz — JM Bullion\nBitcoin: $63,881 (-3.12%)\nSilver: $75.38 (+3.08%)\nFed Funds Rate: 3.75% held — Federal Reserve\n\nKEY NEWS TODAY:\n- Broadcom (AVGO) -12.6%: revenue miss, flat $100B AI guidance. Macquarie downgraded Neutral $437\n- UnitedHealth (UNH) +5.2%: BofA upgraded to Buy, target $450\n- Healthcare +3.1%, Financials +1.8% — major rotation day\n- Semiconductors -2.8%, S&P Tech -1.8%\n- Blackstone (BX) +7.5%: rebounded after capping private credit withdrawals\n- US House voted 215-208 to limit Iran military ops; Trump dismissed it\n- WTI -3% on Iran ceasefire hopes\n- SpaceX IPO roadshow: $135/sh, $1.75T valuation, June 12 debut\n- ADP payrolls +122K beat; JOLTS highest since Nov 2024\n- Rate hike probability surged to 85% year-end (from 60% last week)\n- Fed Schmid: inflation too high, five-year fight\n- RTX upgraded Buy at Jefferies ($220), MDT to Buy at BTIG ($90)\n\nMACRO:\nCPI (Jan 2026): 2.4% — BLS\nPCE (Mar 2026): 3.5% total, 3.2% core — FOMC Minutes\nFed Rate: 3.75% held at Apr 28-29 FOMC\nUnemployment (Mar 2026): 4.3%\nGDP 2026 forecast: 2.4%\nNext FOMC: June 16-17, 2026\nGold ATH: $5,602.22 on Jan 28 2026 — APMEX\nOil context: +48% vs year ago due to US-Iran war\n\nProvide sharp data-driven analysis. Cite real data. Note this is for educational purposes, not personalized investment advice.';
-
-var chatHistory=[];
-async function runAsk(){
-  var inp=document.getElementById('askIn');
-  var q=inp.value.trim();
-  if(!q)return;
-  inp.value='';
-  var btn=document.getElementById('askBtn');
-  btn.disabled=true;btn.textContent='Thinking...';
-  var out=document.getElementById('aiOut');
-  out.classList.add('on');
-  out.innerHTML='<span class="spin">&#8635;</span> Analyzing June 4 market data...';
-  try{
-    var msgs=chatHistory.concat([{role:'user',content:q}]);
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:msgs})
-    });
-    var data=await res.json();
-    var text=(data.content&&data.content[0])?data.content[0].text:'Analysis unavailable.';
-    chatHistory.push({role:'user',content:q},{role:'assistant',content:text});
-    if(chatHistory.length>12)chatHistory=chatHistory.slice(-12);
-    out.innerHTML='<div style="font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:.08em;margin-bottom:10px">SIGNAL AI · JUNE 4, 2026 DATA</div>'+fmt(text);
-    addHistory(q,text);
-  }catch(e){
-    out.innerHTML='<span style="color:var(--red)">Connection error. Please try again.</span>';
-  }
-  btn.disabled=false;btn.textContent='Ask Claude';
-}
-function prefill(q){go('ai',null);document.getElementById('askIn').value=q;document.getElementById('askIn').focus();}
-function fmt(t){
-  return t
-    .replace(/\*\*(.*?)\*\*/g,'<b>$1</b>')
-    .replace(/^### (.+)$/gm,'<div style="font-size:13px;font-weight:600;color:var(--text);margin:12px 0 4px">$1</div>')
-    .replace(/^## (.+)$/gm,'<div style="font-size:14px;font-weight:700;color:var(--cyan);margin:14px 0 6px">$1</div>')
-    .replace(/^- (.+)$/gm,'<div style="padding:2px 0 2px 12px;border-left:2px solid var(--border2);margin:3px 0;color:var(--text2)">$1</div>')
-    .replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');
-}
+var eqFilter="all";
+function fEq(f,btn){eqFilter=f;document.querySelectorAll("#eqF .fbtn").forEach(function(b){b.classList.remove("on");});btn.classList.add("on");renderEq();}
+function renderEq(){var rows=eqFilter==="all"?EQ:EQ.filter(function(e){return e.sec===eqFilter||e.s===eqFilter;});var html="";for(var i=0;i<rows.length;i++){var e=rows[i];var chgCol=e.c.charAt(0)==="+"?"var(--green)":"var(--red)";var sl=e.s==="bull"?"ATTRACTIVE":(e.s==="bear"?"RISK":"WATCH");html+="<tr onclick=\"askTicker('"+e.t+"','"+e.n+"')\"><td class=\"t-tick\">"+e.t+"</td><td class=\"t-name\">"+e.n+"</td><td style=\"color:var(--text3);font-size:11px\">"+e.sec.toUpperCase()+"</td><td><span class=\"bdg "+e.s+"\">"+sl+"</span></td><td style=\"color:"+chgCol+";font-weight:600\">"+e.c+"</td><td>"+e.p+"</td><td style=\"font-size:11px;color:var(--text3)\">"+e.note+"</td></tr>";}document.getElementById("eqB").innerHTML=html;}
+renderEq();
+function askTicker(t,n){go("ai",null);prefill("Analyze "+n+" ("+t+") today. What is driving its performance and what should investors know?");}
+function askSec(n){go("ai",null);prefill("Analyze the "+n+" sector today June 05, 2026. What is driving its performance and what is the outlook?");}
+var SYS="You are SIGNAL, a market intelligence platform. Today is June 05, 2026. Live data: S&P 500=0.00 (+0.00%), Nasdaq=0.00 (+0.00%), Dow=0.00 (+0.00%), Russell 2K=0.00 (+0.00%), VIX=0.00, 10Y Yield=0.00%, 2Y Yield=0.00%, Fed Rate=0.00%, 10Y-2Y Spread=+0.00%, Gold=0.00 (+0.00%), Oil(USO)=0.00 (+0.00%), CPI=0%, Unemployment=0%. Top sector today: Technology (0.0%), worst: Utilities (0.0%). All data from Financial Modeling Prep API, auto-updated daily. Provide sharp data-driven analysis. Not personalized investment advice.";
+var chat=[];
+async function runAsk(){var inp=document.getElementById("askIn");var q=inp.value.trim();if(!q)return;inp.value="";var btn=document.getElementById("askBtn");btn.disabled=true;btn.textContent="Thinking...";var out=document.getElementById("aiOut");out.classList.add("on");out.innerHTML="<span class=\"spin\">&#8635;</span> Analyzing live market data...";try{var msgs=chat.concat([{role:"user",content:q}]);var res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,system:SYS,messages:msgs})});var data=await res.json();var text=(data.content&&data.content[0])?data.content[0].text:"Analysis unavailable.";chat.push({role:"user",content:q},{role:"assistant",content:text});if(chat.length>12)chat=chat.slice(-12);out.innerHTML="<div style=\"font-family:var(--mono);font-size:10px;color:var(--purple);margin-bottom:10px\">SIGNAL AI · June 05, 2026</div>"+fmt(text);addHist(q,text);}catch(e){out.innerHTML="<span style=\"color:var(--red)\">Connection error. Please try again.</span>";}btn.disabled=false;btn.textContent="Ask Claude";}
+function prefill(q){go("ai",null);document.getElementById("askIn").value=q;document.getElementById("askIn").focus();}
+function quickAsk(q){go("ai",null);document.getElementById("askIn").value=q;runAsk();}
+function fmt(t){return t.replace(/\*\*(.*?)\*\*/g,"<b>$1</b>").replace(/^### (.+)$/gm,"<div style=\"font-size:13px;font-weight:600;color:var(--text);margin:12px 0 4px\">$1</div>").replace(/^## (.+)$/gm,"<div style=\"font-size:14px;font-weight:700;color:var(--cyan);margin:14px 0 6px\">$1</div>").replace(/^- (.+)$/gm,"<div style=\"padding:2px 0 2px 12px;border-left:2px solid var(--border2);margin:3px 0;color:var(--text2)\">$1</div>").replace(/\n\n/g,"<br><br>").replace(/\n/g,"<br>");}
 var rLog=[];
-function addHistory(q,a){
-  rLog.unshift({q:q,a:a,t:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})});
-  var h=document.getElementById('resHist');
-  var html='';
-  for(var i=0;i<Math.min(rLog.length,4);i++){
-    var r=rLog[i];
-    html+='<div class="aip"><div style="font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:7px">'+r.t+' · RESEARCH</div><div style="font-size:13px;font-weight:600;color:var(--cyan);margin-bottom:8px">'+r.q+'</div><div style="font-size:12px;color:var(--text2);line-height:1.7;max-height:160px;overflow:hidden">'+fmt(r.a)+'</div></div>';
-  }
-  h.innerHTML=html;
-}
+function addHist(q,a){rLog.unshift({q:q,a:a,t:new Date().toLocaleTimeString("en-US",{hour:"2-digit",minute:"2-digit"})});var h=document.getElementById("resHist");var html="";for(var i=0;i<Math.min(rLog.length,3);i++){var r=rLog[i];html+="<div class=\"aip\"><div style=\"font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:7px\">"+r.t+" · RESEARCH</div><div style=\"font-size:13px;font-weight:600;color:var(--cyan);margin-bottom:8px\">"+r.q+"</div><div style=\"font-size:12px;color:var(--text2);line-height:1.7;max-height:160px;overflow:hidden\">"+fmt(r.a)+"</div></div>";}h.innerHTML=html;}
 </script>
 </body>
 </html>
